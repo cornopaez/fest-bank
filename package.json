@@ -1,0 +1,15 @@
+{
+  "name": "fest-bank",
+  "version": "0.0.1",
+  "description": "Back-end for API.ai app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "cornopaez",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2"
+  }
+}
