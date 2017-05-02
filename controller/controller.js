@@ -4,7 +4,7 @@ module.exports.set = function(app) {
 	})
 
 	app.post('/webhook', function (req, res) {
-	  console.log(req[0].body);
+	  console.log(req);
 
 	  var response_data = {
 			"speech": "This is a response from the backend.",
