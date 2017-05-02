@@ -11,7 +11,7 @@ module.exports.set = function(app) {
 
 	app.post('/webhook', function (req, res) {
 	  // console.log(req);
-	  console.dir(req);
+	  console.dir(req.body);
 
 	  var response_data = {
 			"speech": "This is a response from the backend.",
