@@ -1,3 +1,5 @@
+const bodyParser = require('body-parser');
+
 module.exports.set = function(app) {
 
 	app.use(bodyParser.json()); // support json encoded bodies
