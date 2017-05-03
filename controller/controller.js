@@ -19,8 +19,8 @@ module.exports.set = function(app) {
 	  pnc.set(pncData);
 
 	  var response_data = {
-			"speech": pnc.resultText,
-			"displayText": pnc.resultText,
+			"speech": pnc.resultText(),
+			"displayText": pnc.resultText(),
 			// "data": {},
 			// "contextOut": [],
 			"source": "FestServer",
