@@ -1,7 +1,7 @@
 // var http = require('http');
 
 var pncData;
-var whoAmI;
+var whoAmI = "";
 var result = "";
 
 module.exports.set = function(data) {
@@ -11,13 +11,14 @@ module.exports.set = function(data) {
 	switch (pncData.action) {
 		case "login":
 			// If login, retrieve accounts for each person.
+			whoAmI = pncData.parameters.username;
 			result = "Hi " + pncData.parameters.username;
 			break;
-		case "who_am_i":
+		case "who":
 			if (whoAmI === "") {
 				result = "A person has no name.";
 			} else {
-				result = pncData.parameters.username;
+				result = whoAmI;
 			}
 			break;
 		default:
