@@ -1,5 +1,7 @@
 const bodyParser = require('body-parser');
 
+var pnc = require ("../vendor/pnc.js")
+
 module.exports.set = function(app) {
 
 	app.use(bodyParser.json()); // support json encoded bodies
@@ -11,10 +13,13 @@ module.exports.set = function(app) {
 
 	app.post('/webhook', function (req, res) {
 	  // console.log(req);
-	  console.dir(req.body.result.parameters);
+	  console.dir(req.body.result);
+	  var pncData = req.body.result;
+
+	  pnc.set(pncData);
 
 	  var response_data = {
-			"speech": "This is a response from the backend.",
+			"speech": pnc,
 			"displayText": "This is a response from the backend.",
 			// "data": {},
 			// "contextOut": [],
