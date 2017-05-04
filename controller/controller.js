@@ -27,6 +27,8 @@ module.exports.set = function(app) {
 			// "followupEvent" : {}
 		};
 
+		console.log(response_data);
+
 	  res.set('Content-Type', 'application/json');
 
 	  res.send(response_data);
