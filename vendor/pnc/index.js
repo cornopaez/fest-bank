@@ -27,6 +27,9 @@ module.exports.set = function(data) {
 		case "billpay-recent":
 			result = "Hey Brett. You just tried to call me but I don't want to work. Please ask later."
 			break;
+		case "billpay-annual":
+			result = "Hey Brett. You just tried to call the annual thingy- Cool."
+			break;
 		default:
 			break;
 	}

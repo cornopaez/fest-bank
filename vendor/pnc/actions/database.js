@@ -1,11 +1,11 @@
 var request = require("request");
-
+var result = "";
 
 module.exports.getData = function() {
 	// var options = { method: 'GET',
 	//   url: 'mmpgh.com/API/checkBill.php',
 	// };
-	var result = "";
+	// var result = "";
 
 	request("http://mmpgh.com/API/checkBill.php?keyword=GAS&period=2017-05-01", function (error, response, body) {
 	  if (error) throw new Error(error);
@@ -13,5 +13,5 @@ module.exports.getData = function() {
 	  console.log(body);
 	});
 
-	return result;
+	// return result;
 }
