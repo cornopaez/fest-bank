@@ -37,7 +37,17 @@ module.exports.set = function(data) {
 			result = database.getResult();
 			break;
 		case "billpay-recent":
-			result = "Hey Brett. You just tried to call me but I don't want to work. Please ask later."
+			var dates = data.parameters.date-period.split("/");
+			var startDate = dates[0];
+			var endDate = dates[1];
+			var billType = data.parameters.billtype
+			console.log(startDate);
+			console.log(endDate);
+			console.log(billType);
+			console.log(dates);
+			database.getData(startDate, endDate, billType);
+			result = database.getResult();
+			// result = "Hey Brett. You just tried to call me but I don't want to work. Please ask later."
 			break;
 		case "billpay-annual":
 			result = "Hey Brett. You just tried to call the annual thingy- Cool."
