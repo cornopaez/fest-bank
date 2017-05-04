@@ -17,8 +17,8 @@ module.exports.set = function(data) {
 			// If login, retrieve accounts for each person.
 			login.login();
 			key = login.getKey();
-			whoAmI = data.parameters.username;
-			result = "Hi " + data.parameters.username;
+			// whoAmI = data.parameters.username;
+			result = "Hi.";
 			break;
 		case "who":
 			if (whoAmI === "") {
