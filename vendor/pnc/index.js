@@ -45,6 +45,7 @@ module.exports.set = function(data) {
 			var endDate = dates[1];
 			var billType = data.parameters.billtype
 			database.getData(startDate, endDate, billType);
+			console.log(result);
 			result = database.getResult();
 			// while (result == "") {
 			// 	require("deasync").runLoopOnce();
