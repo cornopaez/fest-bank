@@ -1,9 +1,9 @@
-var request = require("request");
+const request = require("request");
 var result = "";
 
 module.exports.getData = function() {
 
-	request("http://mmpgh.com/API/checkBill.php?keyword=GAS&period=2017-05-01", function (error, response, body) {
+	request("http://mmpgh.com/API/checkBill.php?keyword=GAS&startDate=2017-05-01&endDate=2017-05-31", function (error, response, body) {
 	  if (error) throw new Error(error);
 	  result = body;
 	  console.log(body);
