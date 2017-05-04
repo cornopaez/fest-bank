@@ -44,10 +44,10 @@ module.exports.set = function(data) {
 			var startDate = dates[0];
 			var endDate = dates[1];
 			var billType = data.parameters.billtype
-			console.log(startDate);
-			console.log(endDate);
-			console.log(billType);
-			console.log(dates);
+			// console.log(startDate);
+			// console.log(endDate);
+			// console.log(billType);
+			// console.log(dates);
 			database.getData(startDate, endDate, billType);
 			result = database.getResult();
 			// result = "Hey Brett. You just tried to call the annual thingy- Cool."
