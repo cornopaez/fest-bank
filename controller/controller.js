@@ -1,6 +1,6 @@
 const bodyParser = require('body-parser');
 
-var pnc = require ("../vendor/pnc.js")
+var pnc = require ("../vendor/pnc/index.js")
 
 module.exports.set = function(app) {
 
