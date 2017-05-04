@@ -19,4 +19,4 @@ module.exports.login = function() {
 	console.log(result.getBody('utf8'));
 }
 
-exports.getKey = () => JSON.parse(result.getBody('utf8'));
+exports.getKey = () => result.getBody('utf8');
