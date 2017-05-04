@@ -47,7 +47,7 @@ module.exports.set = function(data) {
 			database.getData(startDate, endDate, billType);
 			result = database.getResult();
 			while (result == "") {
-				require("dasync").runLoopOnce();
+				require("deasync").runLoopOnce();
 				result = database.getResult();
 			}
 			// result = "Hey Brett. You just tried to call the annual thingy- Cool."
