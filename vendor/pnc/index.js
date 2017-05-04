@@ -1,3 +1,5 @@
+const bodyParser = require('body-parser');
+
 var pncData;
 var whoAmI = "";
 var result = "";
@@ -25,9 +27,9 @@ module.exports.set = function(data) {
 		case "database":
 			var temp = ""
 			database.getData();
-			temp = database.getResult();
+			result = database.getResult();
 
-			result = temp.total
+			// result = temp.total
 			break;
 		case "billpay-recent":
 			result = "Hey Brett. You just tried to call me but I don't want to work. Please ask later."
