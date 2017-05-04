@@ -1,24 +1,22 @@
 // var http = require('http');
-var request = require("request");
+const request = require("sync-request");
+var result;
 
-// {
-// 	"username": "mayduncan180",
-// 	"password": "mayduncan180"
-// }
+// {"username": "mayduncan180","password": "mayduncan180"}
 
-module.exports.login = function(user) {
+module.exports.login = function() {
 
-	var options = { method: 'POST',
-	  url: 'https://nginx0.pncapix.com/security/v1.0.0/login',
-	  headers: 
-	   { 'cache-control': 'no-cache',
-	     authorization: 'Bearer eed8bcf9-d58f-332b-ba8b-cb4102a7588f',
-	     accept: 'application/json'},
-	  formData: { username: 'mayduncan180', password: 'mayduncan180' } };
+	var url = "https://nginx0.pncapix.com/security/v1.0.0/login?username=mayduncan180&password=mayduncan180"
+	var options = {
+		headers: { 
+			'cache-control': 'no-cache',
+			authorization: 'Bearer 0e66dbb9-fc92-3082-9870-7106c631ff65',
+			accept: 'application/json'
+		},
+	};
 
-	request(options, function (error, response, body) {
-	  if (error) throw new Error(error);
-
-	  console.log(body);
-	});
+	result = request("post", url, options);
+	console.log(result.getBody('utf8'));
 }
+
+exports.getKey = () => JSON.parse(result.getBody('utf8'));

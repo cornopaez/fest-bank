@@ -3,8 +3,10 @@ const bodyParser = require('body-parser');
 var pncData;
 var whoAmI = "";
 var result = "";
+var key = "";
 
 var database = require("./actions/database.js");
+var login = require("./actions/login.js");
 
 module.exports.set = function(data) {
 	// pncData = data;
@@ -13,7 +15,8 @@ module.exports.set = function(data) {
 	switch (data.action) {
 		case "login":
 			// If login, retrieve accounts for each person.
-
+			login.login();
+			key = login.getKey();
 			whoAmI = data.parameters.username;
 			result = "Hi " + data.parameters.username;
 			break;
@@ -33,8 +36,6 @@ module.exports.set = function(data) {
 			result = database.getResult();
 			break;
 		case "billpay-recent":
-			// result = "Hey Brett. You just tried to call me but I don't want to work. Please ask later."
-			// break;
 		case "billpay-annual":
 			var dates = data.parameters["date-period"].split("/");
 			var startDate = dates[0];
@@ -44,6 +45,9 @@ module.exports.set = function(data) {
 			// console.log(result);
 			result = database.getResult();
 			// console.log(result);
+			break;
+		case "peoplepay-authenticated":
+
 			break;
 		default:
 			break;
