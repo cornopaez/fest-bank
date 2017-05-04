@@ -15,3 +15,5 @@ module.exports.getData = function() {
 
 	// return result;
 }
+
+module.getResult = () => result;
