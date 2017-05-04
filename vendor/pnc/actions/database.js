@@ -1,5 +1,5 @@
 const request = require("request");
-var result = "";
+var result = {};
 
 module.exports.getData = function() {
 
@@ -10,4 +10,4 @@ module.exports.getData = function() {
 	});
 }
 
-exports.getResult = () => result.total;
+exports.getResult = () => result;

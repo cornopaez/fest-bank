@@ -28,6 +28,8 @@ module.exports.set = function(data) {
 			var temp = ""
 			database.getData();
 			result = database.getResult();
+			console.log(result);
+			console.log(typeof result);
 
 			// result = temp.total
 			break;
