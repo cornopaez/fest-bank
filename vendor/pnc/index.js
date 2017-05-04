@@ -27,11 +27,11 @@ module.exports.set = function(data) {
 		case "database":
 			var temp = ""
 			database.getData();
-			result = database.getResult();
-			console.log("This is the result: " + result);
-			console.log("This is the type of the result: " + typeof result);
+			temp = database.getResult();
+			// console.log("This is the result: " + result);
+			// console.log("This is the type of the result: " + typeof result);
 
-			// result = temp.total
+			result = temp.total
 			break;
 		case "billpay-recent":
 			result = "Hey Brett. You just tried to call me but I don't want to work. Please ask later."
