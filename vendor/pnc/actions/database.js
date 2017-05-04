@@ -7,8 +7,8 @@ module.exports.getData = function() {
 	  if (error) throw new Error(error);
 	  // result = body;
 	  result = JSON.parse(body);
-	  // console.log("This is the raw body: " + body);
-	  // console.log("The type of the database result is: " + typeof result);
+	  console.log("This is the raw body: " + body);
+	  console.log("The type of the database result is: " + typeof result);
 	});
 }
 
