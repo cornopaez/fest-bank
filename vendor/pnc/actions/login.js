@@ -11,7 +11,9 @@ module.exports.login = function() {
 		headers: { 
 			'cache-control': 'no-cache',
 			authorization: 'Bearer 7a088694-011e-35bb-baaf-5c6c79e33eac',
-			accept: 'application/json'
+			accept: 'application/json',
+			body: { password: 'mayduncan180', username: 'mayduncan180' },
+  			json: true 
 		},
 	};
 
