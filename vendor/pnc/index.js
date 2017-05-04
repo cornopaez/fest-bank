@@ -25,7 +25,15 @@ module.exports.set = function(data) {
 			}
 			break;
 		case "database":
-			database.getData();
+			var dates = data.parameters.date-period.split("/");
+			var startDate = dates[0];
+			var endDate = dates[1];
+			var billType = data.parameters.billtype
+			console.log(startDate);
+			console.log(endDate);
+			console.log(billType);
+			console.log(dates);
+			database.getData(startDate, endDate, billType);
 			result = database.getResult();
 			break;
 		case "billpay-recent":
