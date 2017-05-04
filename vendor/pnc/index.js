@@ -28,7 +28,9 @@ module.exports.set = function(data) {
 			var temp = {};
 			database.getData();
 			temp = database.getResult();
+			console.log(temp);
 			result = temp.total
+
 			console.log("This is the temp: " + temp);
 			console.log("This is the type of the temp: " + typeof temp);
 			console.log("This is the result: " + result);
