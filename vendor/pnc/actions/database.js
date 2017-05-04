@@ -7,6 +7,7 @@ module.exports.getData = function() {
 	  if (error) throw new Error(error);
 	  result = body;
 	  console.log(body);
+	  console.log("The type of the body is: " + typeof body);
 	});
 }
 
