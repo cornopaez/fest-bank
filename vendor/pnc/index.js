@@ -46,10 +46,10 @@ module.exports.set = function(data) {
 			var billType = data.parameters.billtype
 			database.getData(startDate, endDate, billType);
 			result = database.getResult();
-			while (result == "") {
-				require("deasync").runLoopOnce();
-				result = database.getResult();
-			}
+			// while (result == "") {
+			// 	require("deasync").runLoopOnce();
+			// 	result = database.getResult();
+			// }
 			// result = "Hey Brett. You just tried to call the annual thingy- Cool."
 			break;
 		default:
