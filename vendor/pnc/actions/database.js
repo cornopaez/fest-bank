@@ -1,5 +1,5 @@
 const request = require("request");
-var result = {};
+var result;
 
 module.exports.getData = function() {
 
