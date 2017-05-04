@@ -27,7 +27,7 @@ module.exports.getData = function(startDate, endDate, billType) {
 	var url = "http://mmpgh.com/API/checkBill.php?keyword=" + billType + "&startDate=" + startDate + "&endDate=" + endDate;
 	console.log(url);
 	result = request("GET", url);
-	console.log(result);
+	console.log(result.body);
 
 	// console.log(url);
 
