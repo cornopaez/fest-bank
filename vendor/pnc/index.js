@@ -28,10 +28,11 @@ module.exports.set = function(data) {
 			var temp = ""
 			database.getData();
 			temp = database.getResult();
-			// console.log("This is the result: " + result);
-			// console.log("This is the type of the result: " + typeof result);
-
 			result = temp.total
+
+			console.log("This is the result: " + result);
+			console.log("This is the type of the result: " + typeof result);
+
 			break;
 		case "billpay-recent":
 			result = "Hey Brett. You just tried to call me but I don't want to work. Please ask later."
