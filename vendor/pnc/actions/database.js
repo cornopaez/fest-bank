@@ -21,4 +21,4 @@ module.exports.getData = function(startDate, endDate, billType) {
 	// });
 }
 
-exports.getResult = () => result;
+exports.getResult = () => result.getBody('utf8');
