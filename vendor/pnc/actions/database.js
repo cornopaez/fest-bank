@@ -13,23 +13,25 @@ module.exports.getData = function(startDate, endDate, billType) {
 
 	// connection.connect()
 
-	// connection.query('SELECT 1 + 1 AS solution', function (err, rows, fields) {
-	//   if (err) throw err
+	// var query = "SELECT `PAYEE`, `DATE` , `AMOUNT` FROM `BILLS_PAID` WHERE `KEYWORD` = '" + billType + "' and `DATE` >= DATE(" + startDate + ") and `DATE` <= DATE(" + endDate + ")"
 
-	//   console.log('The solution is: ', rows[0].solution)
+	// connection.query(query, function (err, rows, fields) {
+	//   if (err) throw err
+	//   	// var temp = ""
+	//   console.log('The solution is: ' + rows[0].payee)
 	// })
 
 	// connection.end()
 
 	var url = "http://mmpgh.com/API/checkBill.php?keyword=" + billType + "&startDate=" + startDate + "&endDate=" + endDate;
 	console.log(url);
-	result = "";
 
 	request(url, function (error, response, body) {
 	  if (error) throw new Error(error);
 	  result = body;
 	  console.log(result);
 	  console.log(url);
+	  // exports.getResult = () => result;
 	});
 }
 

@@ -45,7 +45,9 @@ module.exports.set = function(data) {
 			var endDate = dates[1];
 			var billType = data.parameters.billtype
 			database.getData(startDate, endDate, billType);
-			result = database.getResult();
+			do {
+				result = database.getResult();
+			} while (result === "");
 			// result = "Hey Brett. You just tried to call the annual thingy- Cool."
 			break;
 		default:
