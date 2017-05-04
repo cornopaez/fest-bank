@@ -7,7 +7,7 @@ module.exports.getData = function() {
 	  if (error) throw new Error(error);
 	  result = body;
 	  result = JSON.parse(body);
-	  console.log(body);
+	  console.log("This is the raw body: " + body);
 	  console.log("The type of the body is: " + typeof body);
 	});
 }
