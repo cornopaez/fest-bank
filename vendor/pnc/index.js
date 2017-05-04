@@ -29,30 +29,21 @@ module.exports.set = function(data) {
 			var startDate = dates[0];
 			var endDate = dates[1];
 			var billType = data.parameters.billtype
-			console.log(startDate);
-			console.log(endDate);
-			console.log(billType);
-			console.log(dates);
 			database.getData(startDate, endDate, billType);
 			result = database.getResult();
 			break;
 		case "billpay-recent":
-			result = "Hey Brett. You just tried to call me but I don't want to work. Please ask later."
-			break;
+			// result = "Hey Brett. You just tried to call me but I don't want to work. Please ask later."
+			// break;
 		case "billpay-annual":
 			var dates = data.parameters["date-period"].split("/");
 			var startDate = dates[0];
 			var endDate = dates[1];
 			var billType = data.parameters.billtype
 			database.getData(startDate, endDate, billType);
-			console.log(result);
+			// console.log(result);
 			result = database.getResult();
-			console.log(result);
-			// while (result == "") {
-			// 	require("deasync").runLoopOnce();
-			// 	result = database.getResult();
-			// }
-			// result = "Hey Brett. You just tried to call the annual thingy- Cool."
+			// console.log(result);
 			break;
 		default:
 			break;

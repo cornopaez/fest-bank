@@ -10,15 +10,6 @@ module.exports.getData = function(startDate, endDate, billType) {
 	result = request("GET", url);
 	console.log(result.getBody('utf8'));
 
-	// console.log(url);
-
-	// request(url, function (error, response, body) {
-	//   if (error) throw new Error(error);
-	//   result = body;
-	//   console.log(result);
-	//   console.log(url);
-	//   // exports.getResult = () => result;
-	// });
 }
 
 exports.getResult = () => result.getBody('utf8');
