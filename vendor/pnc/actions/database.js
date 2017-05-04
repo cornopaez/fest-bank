@@ -10,4 +10,4 @@ module.exports.getData = function() {
 	});
 }
 
-module.getResult = () => result;
+exports.getResult = () => result;
