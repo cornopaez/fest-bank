@@ -9,6 +9,7 @@ module.exports.getData = function() {
 	  result = JSON.parse(body);
 	  console.log("This is the raw body: " + body);
 	  console.log("The type of the database result is: " + typeof result);
+	  console.log("The database result is: " + result);
 	});
 }
 
