@@ -6,7 +6,7 @@ var result = "";
 var key = "";
 
 var database = require("./actions/database.js");
-var login = require("./actions/login.js");
+var loginService = require("./actions/action.js");
 
 module.exports.set = function(data) {
 	// pncData = data;
@@ -15,11 +15,21 @@ module.exports.set = function(data) {
 	switch (data.action) {
 		case "login":
 			// If login, retrieve accounts for each person.
-			login.login();
-			key = "Bearer " + login.getKey();
+			// login.login();
+			// key = "Bearer " + login.getKey();
 			// whoAmI = data.parameters.username;
-			console.log(key);
-			result = "Hi " + data.parameters.username;;
+			// console.log(key);
+			// result = "Hi " + data.parameters.username;;
+
+			loginService.login()
+		        .then(function(loginResponse) {
+		            console.log("cool");
+		            console.log(loginResponse);
+		            //res.json({package: packg});
+		        }).catch(function(err) {
+		            console.log("NOT cool");
+		            console.log(err);
+		        });
 			break;
 		case "who":
 			if (whoAmI === "") {
