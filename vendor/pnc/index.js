@@ -22,7 +22,7 @@ module.exports.set = function(data) {
 			}
 			break;
 		case "database":
-			result = database.getData;
+			result = database.getData();
 			break;
 		default:
 			break;
