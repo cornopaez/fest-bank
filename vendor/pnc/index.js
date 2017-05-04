@@ -25,7 +25,7 @@ module.exports.set = function(data) {
 			}
 			break;
 		case "database":
-			var temp = ""
+			var temp = {};
 			database.getData();
 			temp = database.getResult();
 			result = temp.total
