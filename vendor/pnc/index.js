@@ -16,9 +16,10 @@ module.exports.set = function(data) {
 		case "login":
 			// If login, retrieve accounts for each person.
 			login.login();
-			key = login.getKey();
+			key = "Bearer " + login.getKey();
 			// whoAmI = data.parameters.username;
-			result = "Hi.";
+			console.log(key);
+			result = "Hi " + data.parameters.username;;
 			break;
 		case "who":
 			if (whoAmI === "") {
