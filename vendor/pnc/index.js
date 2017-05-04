@@ -24,6 +24,9 @@ module.exports.set = function(data) {
 		case "database":
 			result = database.getData();
 			break;
+		case "billpay-recent":
+			result = "Hey Brett. You just tried to call me but I don't want to work. Please ask later."
+			break;
 		default:
 			break;
 	}
