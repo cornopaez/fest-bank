@@ -40,7 +40,7 @@ module.exports.set = function(data) {
 			result = "Hey Brett. You just tried to call me but I don't want to work. Please ask later."
 			break;
 		case "billpay-annual":
-		var dates = data.parameters.date-period.split("/");
+		var dates = data.parameters["date-period"].split("/");
 			var startDate = dates[0];
 			var endDate = dates[1];
 			var billType = data.parameters.billtype
