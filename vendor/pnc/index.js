@@ -8,6 +8,7 @@ var key = "";
 var database = require("./actions/database.js");
 var loginService = require("./actions/login.js");
 var peoplePay = require("./actions/peoplepay.js");
+var billPay = require("./actions/billpay.js");
 
 module.exports = {
 	set: set
@@ -33,6 +34,7 @@ function set(data) {
 			            console.log(err);
 			        });
 				break;
+
 			case "who":
 				if (whoAmI === "") {
 					result = "A person has no name.";
@@ -40,6 +42,7 @@ function set(data) {
 					result = whoAmI;
 				}
 				break;
+
 			case "database":
 				var dates = data.parameters.date-period.split("/");
 				var startDate = dates[0];
@@ -56,6 +59,7 @@ function set(data) {
 		            console.log(err);
 		        });
 				break;
+
 			case "billpay-recent":
 			case "billpay-annual":
 				var dates = data.parameters["date-period"].split("/");
@@ -72,6 +76,7 @@ function set(data) {
 		            console.log(err);
 		        });
 				break;
+
 			case "peoplepay-authenticated":
 				var peoplePayParams = data.contexts[1].parameters;
 				// console.log(key);
@@ -84,7 +89,7 @@ function set(data) {
 					} else {
 						resolve("I'm sorry. Something has gone wrong. No money was transfered. Please try again.")
 					}
-					resolve(peoplePayResponse);
+					// resolve(peoplePayResponse);
 				})
 				.then(
 					peoplePay.postTrans(peoplePayParams["unit-currency"].amount, "libbywaldron@gmail.com")
@@ -93,7 +98,7 @@ function set(data) {
 						})
 						.catch(function(error){
 							console.log("Post transaction failed");
-		            		console.log(err);
+		            		console.log(error);
 						})
 					)
 				.catch(function(err) {
@@ -101,7 +106,45 @@ function set(data) {
 		            console.log(err);
 		        });
 				break;
+
+			case "billpay-authenticated":
+				var billPayParams = data.contexts[0].parameters;
+				var scheduledDate;
+				data.contexts[0].parameters.date === "" ? scheduledDate = new Date() : scheduledDate = data.contexts[1].parameters.date;
+				// console.log(data.contexts[0].parameters);
+				// console.log(data.contexts[1].parameters);
+				// console.log(key);
+				billPay.payBill(billPayParams["unit-currency"].amount, 26, key, scheduledDate)
+				.then(function(billPayResponse){
+					if (billPayResponse.status !== "undefined") {
+						// console.log(peoplePayParams.fulfillment);
+						resolve(data.fulfillment.speech)
+						console.log("BillPay success.")
+					} else {
+						resolve("I'm sorry. Something has gone wrong. I could not pay the bill. Please try again.")
+					}
+					// resolve(peoplePayResponse);
+				})
+				.then(
+					billPay.postTrans(billPayParams["unit-currency"].amount, 26)
+						.then(function(postTransResponse){
+							console.log(postTransResponse);
+						})
+						.catch(function(error){
+							console.log("Post transaction failed");
+		            		console.log(error);
+						})
+					)
+				.catch(function(err) {
+		            console.log("BillPay failed");
+		            console.log(err);
+		        });
+				break;
+			case "":
+				break;
+				
 			default:
+				resolve("Looks like something went wrong. Let's try again.");
 				break;
 		}
 	});
