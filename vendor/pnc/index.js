@@ -78,6 +78,7 @@ function set(data) {
 					if (peoplePayResponse.status !== "undefined") {
 						// console.log(peoplePayParams.fulfillment);
 						resolve(data.fulfillment.speech)
+						console.log("PoeplePay success.")
 					} else {
 						resolve("I'm sorry. Something has gone wrong. No money was transfered. Please try again.")
 					}

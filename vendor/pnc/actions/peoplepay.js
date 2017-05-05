@@ -28,7 +28,7 @@ function sendPayment(amount, destinationToken, currentUserToken){
 
 		request(options, function (error, response, body) {
 			if (error) reject(error);
-			console.log(body);
+			// console.log(body);
 			resolve(body);
 		});
 
