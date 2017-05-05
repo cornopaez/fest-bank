@@ -138,17 +138,33 @@ function set(data) {
 		        });
 				break;
 
-			case "billpay-auth-reminder":
+			case "billpay-auth-reminder2":
 				var billPayReminderParams = data.contexts[0].parameters;
-				// console.log(data.contexts[0].parameters);
-				var scheduledDate = billPayReminderParams.date;
+				//Creating a date
+				var today = new Date();
+				var dd = today.getDate();
+				var mm = today.getMonth()+2; //January is 0!
+				var yyyy = today.getFullYear();
+
+				if(dd<10) {
+				    dd='0'+dd
+				} 
+
+				if(mm<10) {
+				    mm='0'+mm
+				} 
+
+				today = yyyy+"-"+mm+"-"+dd;
+
+				var scheduledDate = today;
 				// console.log(key);
 				reminders.setReminder(scheduledDate, 26)
 				.then(function(remindersResponse){
 					if (remindersResponse.status !== "undefined") {
-						// console.log(peoplePayParams.fulfillment);
-						resolve(data.fulfillment.speech)
+						var answer = "Sure thing! I will remind you next month to pay your bill."
+						resolve(data.fulfillment.speech);
 						console.log(remindersResponse)
+						// console.log(answer)
 					} else {
 						resolve("I'm sorry. Something has gone wrong. I could not set the reminder. Please try again.")
 					}

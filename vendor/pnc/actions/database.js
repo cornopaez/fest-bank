@@ -14,8 +14,9 @@ function getData(startDate, endDate, billType) {
 			url: 'http://mmpgh.com/API/checkBill.php',
 			qs: { 
 				keyword: 'electric',
-				startDate: '2017-01-01',
-				endDate: '2017-12-31' },
+				startDate: startDate,
+				endDate: endDate
+			},
 			headers: {
 				'cache-control': 'no-cache'
 			} 
