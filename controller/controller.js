@@ -25,7 +25,7 @@ function set(app) {
 
 		app.post('/webhook', function (req, res) {
 		  // console.log(req);
-		  	console.dir(req.body.result);
+		  	// console.dir(req.body.result);
 		  	var pncData = req.body.result;
 
 		  	pnc.set(pncData)
