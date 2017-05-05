@@ -25,6 +25,7 @@ function set(data) {
 			            // console.log("cool");
 			            key = "Bearer " + loginResponse.token
 			            result = "Hi " + data.parameters["given-name"];
+			            console.log("Log In success.")
 			            // console.log(result);
 			            resolve(result);
 			        }).catch(function(err) {
@@ -47,6 +48,7 @@ function set(data) {
 
 				database.getData(startDate, endDate, billType)
 				.then(function(databaseResponse){
+					console.log("Database success.")
 					resolve(databaseResponse);
 				})
 				.catch(function(err) {
@@ -62,17 +64,17 @@ function set(data) {
 				var billType = data.parameters.billtype
 				database.getData(startDate, endDate, billType)
 				.then(function(databaseResponse){
+					console.log("BillPay query success.")
 					resolve(databaseResponse);
 				})
 				.catch(function(err) {
-		            console.log("Database failed");
+		            console.log("BillPay query failed");
 		            console.log(err);
 		        });
 				break;
 			case "peoplepay-authenticated":
 				var peoplePayParams = data.contexts[1].parameters;
-				console.log(key);
-				// console.log(data.contexts[1].parameters);
+				// console.log(key);
 				peoplePay.sendPayment(peoplePayParams["unit-currency"].amount, "libbywaldron@gmail.com", key)
 				.then(function(peoplePayResponse){
 					if (peoplePayResponse.status !== "undefined") {
@@ -84,6 +86,16 @@ function set(data) {
 					}
 					resolve(peoplePayResponse);
 				})
+				.then(
+					peoplePay.postTrans(peoplePayParams["unit-currency"].amount, "libbywaldron@gmail.com")
+						.then(function(postTransResponse){
+							console.log(postTransResponse);
+						})
+						.catch(function(error){
+							console.log("Post transaction failed");
+		            		console.log(err);
+						})
+					)
 				.catch(function(err) {
 		            console.log("PeoplePay failed");
 		            console.log(err);
