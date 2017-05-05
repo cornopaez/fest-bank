@@ -1,15 +1,30 @@
-// const request = require("request");
-// const mysql = require('mysql')
-const request = require("sync-request");
+const request = require("request");
 var result = "";
 
-module.exports.getData = function(startDate, endDate, billType) {
-
-	var url = "http://mmpgh.com/API/checkBill.php?keyword=" + billType + "&startDate=" + startDate + "&endDate=" + endDate;
-	console.log(url);
-	result = request("GET", url);
-	console.log(result.getBody('utf8'));
-
+module.exports = {
+	getData: getData
 }
 
-exports.getResult = () => result.getBody('utf8');
+
+function getData(startDate, endDate, billType) {
+
+	return new Promise(function (resolve, reject) {
+
+		var options = { method: 'GET',
+			url: 'http://mmpgh.com/API/checkBill.php',
+			qs: { 
+				keyword: 'electric',
+				startDate: '2017-01-01',
+				endDate: '2017-12-31' },
+			headers: {
+				'cache-control': 'no-cache'
+			} 
+		};
+
+		request(options, function (error, response, body) {
+			if (error) reject(error);
+
+			resolve(body);
+		});
+	});
+};
