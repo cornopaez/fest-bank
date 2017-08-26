@@ -26,7 +26,7 @@ function set(data) {
 			        .then(function(loginResponse) {
 			            // console.log("cool");
 			            key = "Bearer " + loginResponse.token
-			            result = "Hi " + data.parameters["given-name"];
+			            result = "Hi " + data.parameters["username"];
 			            console.log("Log In success.")
 			            // console.log(result);
 			            resolve(result);
